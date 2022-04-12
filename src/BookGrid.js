@@ -8,11 +8,11 @@ class BookGrid extends Component {
         return (
             <ol className="books-grid">
                 {books.map(book => (
-                    <li>
+                    <li key={book.id}>
                         <Book
                             title={book.title}
                             author={book.authors[0]}
-                            imageURL={book.previewLink}/>
+                            imageURL={book.imageLinks.smallThumbnail}/>
                     </li>
                 ))}
             </ol>
