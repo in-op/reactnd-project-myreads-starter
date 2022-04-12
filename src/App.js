@@ -20,8 +20,8 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         <Routes>
-          <Route path='/' element={MainPage}/>
-          <Route path='/search' element={SearchPage} />
+          <Route path='/' element={<MainPage/>}/>
+          <Route path='/search' element={<SearchPage/>} />
         </Routes>
       </div>
     )
