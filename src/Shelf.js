@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import BookGrid from './BookGrid';
 
 class Shelf extends Component {
     render() {
