@@ -3,7 +3,7 @@ import Book from './Book';
 
 class BookGrid extends Component {
     render() {
-        const { books } = this.props;
+        const { books, moveBook } = this.props;
 
         return (
             <ol className="books-grid">
@@ -12,7 +12,9 @@ class BookGrid extends Component {
                         <Book
                             title={book.title}
                             author={book.authors[0]}
-                            imageURL={book.imageLinks.smallThumbnail}/>
+                            imageURL={book.imageLinks.smallThumbnail}
+                            moveBook={newShelf => moveBook(book, newShelf)}
+                        />
                     </li>
                 ))}
             </ol>

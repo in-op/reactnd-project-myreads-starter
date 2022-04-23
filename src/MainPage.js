@@ -4,7 +4,8 @@ import Shelf from './Shelf';
 
 class MainPage extends Component {
     render() {
-        const { books } = this.props
+        const { books, moveBook } = this.props
+        console.log('books', books);
         return (
             <div className="list-books">
                 <div className="list-books-title">
@@ -15,14 +16,17 @@ class MainPage extends Component {
                         <Shelf
                             title="Currently Reading"
                             books={books.filter(b => b.shelf === 'currentlyReading')}
+                            moveBook={moveBook}
                         />
                         <Shelf
                             title="Want to Read"
                             books={books.filter(b => b.shelf === 'wantToRead')}
+                            moveBook={moveBook}
                         />
                         <Shelf
                             title="Read"
                             books={books.filter(b => b.shelf === 'read')}
+                            moveBook={moveBook}
                         />
                     </div>
                 </div>

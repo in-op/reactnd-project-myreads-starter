@@ -3,7 +3,7 @@ import ShelfSelection from './ShelfSelection';
 
 class Book extends Component {
     render() {
-        const { title, author, imageURL } = this.props;
+        const { title, author, imageURL, moveBook } = this.props;
         return (
             <div className="book">
                 <div className="book-top">
@@ -13,7 +13,7 @@ class Book extends Component {
                         backgroundImage: `url("${imageURL}")`,
                     }}></div>
                     <div className="book-shelf-changer">
-                    <ShelfSelection changeShelf={() => {}}/>
+                    <ShelfSelection changeShelf={moveBook}/>
                     </div>
                 </div>
                 <div className="book-title">{title}</div>

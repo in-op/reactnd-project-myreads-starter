@@ -3,7 +3,7 @@ import BookGrid from './BookGrid';
 
 class Shelf extends Component {
     render() {
-        const { title, books } = this.props;
+        const { title, books, moveBook } = this.props;
 
         return (
             <div className="bookshelf">
@@ -11,6 +11,7 @@ class Shelf extends Component {
                 <div className="bookshelf-books">
                     <BookGrid
                         books={books}
+                        moveBook={moveBook}
                     />
                 </div>
             </div>
