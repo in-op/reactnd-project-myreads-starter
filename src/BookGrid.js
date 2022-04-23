@@ -10,9 +10,7 @@ class BookGrid extends Component {
                 {books.map(book => (
                     <li key={book.id}>
                         <Book
-                            title={book.title}
-                            author={book.authors[0]}
-                            imageURL={book.imageLinks.smallThumbnail}
+                            book={book}
                             moveBook={newShelf => moveBook(book, newShelf)}
                         />
                     </li>
