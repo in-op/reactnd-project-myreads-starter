@@ -4,6 +4,7 @@ import ShelfSelection from './ShelfSelection';
 class Book extends Component {
     render() {
         const { book, moveBook } = this.props;
+        const authors = book.authors.join(', ');
 
         return (
             <div className="book">
@@ -18,7 +19,7 @@ class Book extends Component {
                     </div>
                 </div>
                 <div className="book-title">{book.title}</div>
-                <div className="book-authors">{book.author}</div>
+                <div className="book-authors">{authors}</div>
             </div>
         );
     }
