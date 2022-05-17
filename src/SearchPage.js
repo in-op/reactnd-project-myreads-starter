@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import BookGrid from './BookGrid';
+import BookSearch from './BookSearch';
 
 class SearchPage extends Component {
     render() {
@@ -14,10 +15,7 @@ class SearchPage extends Component {
                             Close
                         </button>
                     </Link>
-                    <div className="search-books-input-wrapper">
-                        { }
-                        <input type="text" placeholder="Search by title or author"/>
-                    </div>
+                    <BookSearch></BookSearch>
                 </div>
                 <div className="search-books-results">
                     <BookGrid books={books}/>
