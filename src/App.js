@@ -44,7 +44,7 @@ class BooksApp extends React.Component {
                     />
                     <Route
                         path='/search'
-                        element={<SearchPage books={this.state.books} searchBooks={this.searchBooks}/>}
+                        element={<SearchPage books={this.state.books} searchBooks={this.searchBooks} moveBook={this.moveBook}/>}
                     />
                 </Routes>
             </div>

@@ -5,7 +5,7 @@ import BookSearch from './BookSearch';
 
 class SearchPage extends Component {
     render() {
-        const { books, searchBooks} = this.props
+        const { books, searchBooks, moveBook} = this.props
 
         return (
             <div className="search-books">
@@ -18,7 +18,7 @@ class SearchPage extends Component {
                     <BookSearch searchBooks={searchBooks}></BookSearch>
                 </div>
                 <div className="search-books-results">
-                    <BookGrid books={books}/>
+                    <BookGrid books={books} moveBook={moveBook}/>
                 </div>
             </div>
         )
