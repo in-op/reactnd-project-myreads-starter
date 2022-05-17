@@ -5,7 +5,7 @@ import Shelf from './Shelf';
 
 class MainPage extends Component {
     render() {
-        const { books, moveBook } = this.props
+        const { books, moveBook } = this.props;
 
         return (
             <div className="list-books">
