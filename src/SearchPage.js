@@ -5,7 +5,7 @@ import BookSearch from './BookSearch';
 
 class SearchPage extends Component {
     render() {
-        const { books } = this.props
+        const { books, searchBooks} = this.props
 
         return (
             <div className="search-books">
@@ -15,7 +15,7 @@ class SearchPage extends Component {
                             Close
                         </button>
                     </Link>
-                    <BookSearch></BookSearch>
+                    <BookSearch searchBooks={searchBooks}></BookSearch>
                 </div>
                 <div className="search-books-results">
                     <BookGrid books={books}/>
