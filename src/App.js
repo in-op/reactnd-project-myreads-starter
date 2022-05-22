@@ -7,19 +7,20 @@ import SearchPage from './SearchPage';
 
 class BooksApp extends React.Component {
     state = {
-        books: [],
+        bookshelfBooks: [],
+        searchBooks: [],
     }
 
     componentDidMount() {
         BooksAPI.getAll()
-            .then(books => this.setState({books}));
+            .then(books => this.setState({bookshelfBooks: books}));
     }
 
     moveBook = (book, shelf) => {
         BooksAPI.update(book, shelf)
             .then(response => {
                 BooksAPI.getAll()
-                    .then(books => this.setState({books}));
+                    .then(books => this.setState({bookshelfBooks: books}));
             });
     }
 
@@ -27,9 +28,9 @@ class BooksApp extends React.Component {
         BooksAPI.search(query)
             .then(books => {
                 if (!Array.isArray(books)) {
-                    this.setState({books: []});
+                    this.setState({searchBooks: []});
                 } else {
-                    this.setState({books});
+                    this.setState({searchBooks: books});
                 }
             });
     }
@@ -40,11 +41,11 @@ class BooksApp extends React.Component {
                 <Routes>
                     <Route
                         path='/'
-                        element={<MainPage books={this.state.books} moveBook={this.moveBook}/>}
+                        element={<MainPage books={this.state.bookshelfBooks} moveBook={this.moveBook}/>}
                     />
                     <Route
                         path='/search'
-                        element={<SearchPage books={this.state.books} searchBooks={this.searchBooks} moveBook={this.moveBook}/>}
+                        element={<SearchPage books={this.state.bookshelfBooks} searchBooks={this.searchBooks} moveBook={this.moveBook}/>}
                     />
                 </Routes>
             </div>
