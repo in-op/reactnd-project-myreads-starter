@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 
 class ShelfSelection extends Component {
     state = {
-        'value': '',
+        value: '',
     }
 
     componentDidMount() {
-        this.setState({'value': this.props.value})
+        this.setState({value: this.props.value})
     }
 
     onChange = e => {
