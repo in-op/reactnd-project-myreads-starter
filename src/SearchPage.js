@@ -1,14 +1,30 @@
 import React, { Component } from 'react';
+import * as BooksAPI from './BooksAPI';
 import { Link } from 'react-router-dom';
 import BookGrid from './BookGrid';
 import BookSearch from './BookSearch';
 
 class SearchPage extends Component {
+    state = {
+        searchResults: [],
+    }
+
+    search = query => {
+        BooksAPI.search(query)
+            .then(books => {
+                if (!Array.isArray(books)) {
+                    this.setState({searchResults: []});
+                } else {
+                    this.setState({searchResults: books});
+                }
+            });
+    }
+
     render() {
-        const { searchResults, bookshelfBooks, search, moveBook} = this.props;
+        const { bookshelfBooks, moveBook} = this.props;
 
         const bookshelfBooksById = new Map(bookshelfBooks.map(b => [b.id, b]));
-        const books = searchResults.map(book => {
+        const books = this.state.searchResults.map(book => {
             book.shelf = bookshelfBooksById.has(book.id) ?
                 bookshelfBooksById.get(book.id).shelf : 'none';
             return book;
@@ -22,7 +38,7 @@ class SearchPage extends Component {
                             Close
                         </button>
                     </Link>
-                    <BookSearch search={search}></BookSearch>
+                    <BookSearch search={this.search}></BookSearch>
                 </div>
                 <div className="search-books-results">
                     <BookGrid books={books} moveBook={moveBook}/>

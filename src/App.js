@@ -8,7 +8,6 @@ import SearchPage from './SearchPage';
 class BooksApp extends React.Component {
     state = {
         bookshelfBooks: [],
-        searchResults: [],
     }
 
     componentDidMount() {
@@ -28,17 +27,6 @@ class BooksApp extends React.Component {
             });
     }
 
-    search = query => {
-        BooksAPI.search(query)
-            .then(books => {
-                if (!Array.isArray(books)) {
-                    this.setState({searchResults: []});
-                } else {
-                    this.setState({searchResults: books});
-                }
-            });
-    }
-
     render() {
         return (
             <div className="app">
@@ -55,9 +43,7 @@ class BooksApp extends React.Component {
                         path='/search'
                         element={
                             <SearchPage
-                                searchResults={this.state.searchResults}
                                 bookshelfBooks={this.state.bookshelfBooks}
-                                search={this.search} 
                                 moveBook={this.moveBook}/>
                             }
                     />
