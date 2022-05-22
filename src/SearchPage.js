@@ -5,7 +5,14 @@ import BookSearch from './BookSearch';
 
 class SearchPage extends Component {
     render() {
-        const { searchResults, bookshelfBooks, search, moveBook} = this.props
+        const { searchResults, bookshelfBooks, search, moveBook} = this.props;
+
+        const bookshelfBooksById = new Map(bookshelfBooks.map(b => [b.id, b]));
+        const books = searchResults.map(book => {
+            book.shelf = bookshelfBooksById.has(book.id) ?
+                bookshelfBooksById.get(book.id).shelf : 'none';
+            return book;
+        });
 
         return (
             <div className="search-books">
@@ -18,7 +25,7 @@ class SearchPage extends Component {
                     <BookSearch search={search}></BookSearch>
                 </div>
                 <div className="search-books-results">
-                    <BookGrid books={searchResults} moveBook={moveBook}/>
+                    <BookGrid books={books} moveBook={moveBook}/>
                 </div>
             </div>
         )
