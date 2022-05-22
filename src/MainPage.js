@@ -33,7 +33,7 @@ class MainPage extends Component {
                 </div>
                 <Link to='/search'>
                     <div className="open-search">
-                        <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
+                        <button >Add a book</button>
                     </div>
                 </Link>
             </div>
