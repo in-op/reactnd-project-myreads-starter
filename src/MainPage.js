@@ -33,7 +33,7 @@ class MainPage extends Component {
                 </div>
                 <Link to='/search'>
                     <div className="open-search">
-                        <button >Add a book</button>
+                        <button>Add a book</button>
                     </div>
                 </Link>
             </div>
