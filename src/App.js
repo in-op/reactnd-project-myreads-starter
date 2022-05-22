@@ -41,11 +41,20 @@ class BooksApp extends React.Component {
                 <Routes>
                     <Route
                         path='/'
-                        element={<MainPage books={this.state.bookshelfBooks} moveBook={this.moveBook}/>}
+                        element={
+                            <MainPage
+                                books={this.state.bookshelfBooks}
+                                moveBook={this.moveBook}/>
+                        }
                     />
                     <Route
                         path='/search'
-                        element={<SearchPage books={this.state.bookshelfBooks} searchBooks={this.searchBooks} moveBook={this.moveBook}/>}
+                        element={
+                            <SearchPage
+                                books={this.state.searchBooks}
+                                searchBooks={this.searchBooks} 
+                                moveBook={this.moveBook}/>
+                            }
                     />
                 </Routes>
             </div>
