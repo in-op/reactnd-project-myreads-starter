@@ -8,7 +8,7 @@ import SearchPage from './SearchPage';
 class BooksApp extends React.Component {
     state = {
         bookshelfBooks: [],
-        searchBooks: [],
+        searchResults: [],
     }
 
     componentDidMount() {
@@ -35,16 +35,16 @@ class BooksApp extends React.Component {
     }
 
     moveBookOnSearchPage = (book, shelf) => {
-        this.moveBook(book, shelf, 'searchBooks');
+        this.moveBook(book, shelf, 'searchResults');
     }
 
-    searchBooks = query => {
+    search = query => {
         BooksAPI.search(query)
             .then(books => {
                 if (!Array.isArray(books)) {
-                    this.setState({searchBooks: []});
+                    this.setState({searchResults: []});
                 } else {
-                    this.setState({searchBooks: books});
+                    this.setState({searchResults: books});
                 }
             });
     }
@@ -65,8 +65,9 @@ class BooksApp extends React.Component {
                         path='/search'
                         element={
                             <SearchPage
-                                books={this.state.searchBooks}
-                                searchBooks={this.searchBooks} 
+                                searchResults={this.state.searchResults}
+                                bookshelfBooks={this.state.bookshelfBooks}
+                                search={this.search} 
                                 moveBook={this.moveBookOnSearchPage}/>
                             }
                     />

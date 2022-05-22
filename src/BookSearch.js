@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class BookSearch extends Component {
     updateQuery = query => {
-        this.props.searchBooks(query);
+        this.props.search(query);
     }
 
     render() {
