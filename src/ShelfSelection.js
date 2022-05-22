@@ -9,7 +9,10 @@ class ShelfSelection extends Component {
         this.setState({'value': this.props.value})
     }
 
-    onChange = e => this.props.changeShelf(e.target.value);
+    onChange = e => {
+        this.props.changeShelf(e.target.value);
+        this.setState({value: e.target.value})
+    };
 
     render() {
         return (
