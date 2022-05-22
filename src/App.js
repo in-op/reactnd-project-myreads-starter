@@ -16,26 +16,16 @@ class BooksApp extends React.Component {
             .then(books => this.setState({bookshelfBooks: books}));
     }
 
-    moveBook = (book, shelf, bookListName) => {
+    moveBook = (book, shelf) => {
         BooksAPI.update(book, shelf)
             .then(response => {
                 book.shelf = shelf;
-                this.setState(state => {
-                    const newState = {};
-                    newState[bookListName] = state[bookListName]
+                this.setState(state => ({
+                    bookshelfBooks: state.bookshelfBooks
                         .filter(b => b.id !== book.id)
-                        .concat([ book ]);
-                    return newState
-                });
+                        .concat([ book ]),
+                }));
             });
-    }
-
-    moveBookOnMainPage = (book, shelf) => {
-        this.moveBook(book, shelf, 'bookshelfBooks');
-    }
-
-    moveBookOnSearchPage = (book, shelf) => {
-        this.moveBook(book, shelf, 'searchResults');
     }
 
     search = query => {
@@ -58,7 +48,7 @@ class BooksApp extends React.Component {
                         element={
                             <MainPage
                                 books={this.state.bookshelfBooks}
-                                moveBook={this.moveBookOnMainPage}/>
+                                moveBook={this.moveBook}/>
                         }
                     />
                     <Route
@@ -68,7 +58,7 @@ class BooksApp extends React.Component {
                                 searchResults={this.state.searchResults}
                                 bookshelfBooks={this.state.bookshelfBooks}
                                 search={this.search} 
-                                moveBook={this.moveBookOnSearchPage}/>
+                                moveBook={this.moveBook}/>
                             }
                     />
                 </Routes>
